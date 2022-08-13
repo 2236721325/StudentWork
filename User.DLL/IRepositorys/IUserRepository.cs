@@ -6,7 +6,7 @@ using User_DLL.Models;
 
 namespace User_DLL.IRepositorys
 {
-    public interface IUserRepository : IBaseRepository<User>
+    public interface IUserRepository : IBaseRepository<CheckRecord>
     {
 
     }

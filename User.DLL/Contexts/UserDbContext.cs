@@ -39,8 +39,8 @@ namespace User_DLL.Contexts
                 et.Property(t => t.CreateTime).HasDefaultValueSql("getdate()");
             });
 
-
         }
+       
 
     }
 }

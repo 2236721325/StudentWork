@@ -1,7 +1,14 @@
-﻿namespace User_DLL.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace User_DLL.Models.InputModels
 {
-    public class User : BaseEntity
+    public class RegisterModel
     {
+        public string Name { get; set; }
         public string UserName { get; set; }//账号
         public string UserPwd { get; set; }
         public string IDCard { get; set; }//身份证号
@@ -10,6 +17,10 @@
         public string AddressDetail { get; set; }//地址
         public string CurrentUnit { get; set; }
         public string? Remarks { get; set; }
-        public List<CheckRecord> CheckRecords { get; set; }
+    }
+    public struct TimePeriod
+    {
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
     }
 }

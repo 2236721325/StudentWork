@@ -2,6 +2,8 @@
 {
     public class CheckRecordDTO:BaseEntity
     {
-        public bool ResultType { get; set; }//0阳性 1阴性 
+        public bool IsDanger { get; set; }
+        public string IDCard { get; set; }//身份证号
+
     }
 }

@@ -8,7 +8,7 @@ namespace User_DLL.Repositorys
 {
     public class CheckRecordRepository : BaseRepository<CheckRecord>, ICheckRecordRepository
     {
-        public CheckRecordRepository(UserDbContext context) : base(context)
+        public CheckRecordRepository(DbContext context) : base(context)
         {
 
         }

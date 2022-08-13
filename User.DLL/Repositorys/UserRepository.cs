@@ -1,4 +1,5 @@
-﻿using Shared.BaseRepositorys;
+﻿using Microsoft.EntityFrameworkCore;
+using Shared.BaseRepositorys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ using User_DLL.Models;
 
 namespace User_DLL.Repositorys
 {
-    public class UserRepository : BaseRepository<User>, IUserRepository
+    public class UserRepository : BaseRepository<CheckRecord>, IUserRepository
     {
-        public UserRepository(UserDbContext context):base(context)
+        public UserRepository(DbContext context):base(context)
         {
 
         }

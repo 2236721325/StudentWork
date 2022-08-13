@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using User_DLL.Models.DTOs;
+using User_DLL.Models.InputModels;
 
 namespace User_DLL.Models.Extensions
 {
@@ -12,8 +13,9 @@ namespace User_DLL.Models.Extensions
     {
         public CustomAutoMapperProfile()
         {
-            CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<CheckRecord, UserDTO>().ReverseMap();
             CreateMap<CheckRecord, CheckRecordDTO>().ReverseMap();
+            CreateMap<RegisterModel, CheckRecord>().ReverseMap();
         }
     }
 }
