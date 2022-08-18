@@ -32,10 +32,9 @@ namespace JWT_API.Controllers
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             };
 
-            DateTime expirationTime = DateTime.Now.AddHours(jwtSettings.ExpirationHour);
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey));
             var credentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256Signature);
-            var jwtToken = new JwtSecurityToken(issuer: jwtSettings.Issuer, audience: jwtSettings.Audience, claims: claims, expires: expirationTime, signingCredentials: credentials);
+            var jwtToken = new JwtSecurityToken(issuer: jwtSettings.Issuer, audience: jwtSettings.Audience, claims: claims, signingCredentials: credentials);
             string jwt = new JwtSecurityTokenHandler().WriteToken(jwtToken);
             return Ok(jwt);
         }

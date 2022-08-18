@@ -18,9 +18,4 @@ namespace User_DLL.Models.InputModels
         public string CurrentUnit { get; set; }
         public string? Remarks { get; set; }
     }
-    public struct TimePeriod
-    {
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-    }
 }

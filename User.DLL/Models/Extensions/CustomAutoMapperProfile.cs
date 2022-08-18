@@ -15,7 +15,7 @@ namespace User_DLL.Models.Extensions
         {
             CreateMap<CheckRecord, UserDTO>().ReverseMap();
             CreateMap<CheckRecord, CheckRecordDTO>().ReverseMap();
-            CreateMap<RegisterModel, CheckRecord>().ReverseMap();
+            CreateMap<RegisterModel, User>().ReverseMap();
         }
     }
 }

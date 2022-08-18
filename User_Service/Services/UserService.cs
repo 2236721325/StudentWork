@@ -8,8 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using User_DLL.IRepositorys;
 using User_DLL.Models;
 using User_DLL.Models.DTOs;
+using User_DLL.Repositorys;
 using User_Service.Helps;
 using User_Service.IServices;
 
@@ -18,12 +20,12 @@ namespace User_Service.Services
     public class UserService:BaseService<User>,IUserService
     {
 
-        public UserService(IBaseRepository<User> repository) : base(repository)
+        public UserService(IUserRepository userRepository)
         {
-        
+            this.repository = userRepository;
         }
 
-             
+
     }
 
    

@@ -11,9 +11,9 @@ using User_DLL.Models;
 
 namespace User_DLL.Repositorys
 {
-    public class UserRepository : BaseRepository<CheckRecord>, IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        public UserRepository(DbContext context):base(context)
+        public UserRepository(UserDbContext context):base(context)
         {
 
         }

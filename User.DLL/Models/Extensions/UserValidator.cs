@@ -11,7 +11,7 @@ namespace User_DLL.Models.Extensions
             RuleFor(t => t.UserPwd).MaximumLength(32);
             RuleFor(t => t.PhoneNumber).MaximumLength(11);
             RuleFor(t => t.AddressDetail).MaximumLength(128);
-            RuleFor(t => t.Remarks).NotNull().MaximumLength(128);
+            RuleFor(t => t.Remarks).MaximumLength(128);
             RuleFor(t => t.CurrentUnit).MaximumLength(32);
             RuleFor(t => t.IDCard).MaximumLength(18);
             RuleFor(t => t.AddressDetail).MaximumLength(128);

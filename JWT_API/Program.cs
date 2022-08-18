@@ -10,6 +10,7 @@ using User_DLL.IRepositorys;
 using User_DLL.Models;
 using User_DLL.Models.Extensions;
 using User_DLL.Repositorys;
+using User_Service.Helps;
 using User_Service.IServices;
 using User_Service.Services;
 
@@ -33,20 +34,10 @@ namespace JWT_API
                ));
             //JWT
             builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("JWT"));//也是依赖注入 注入的时候带有默认值（appsettings读取）
+            
 
-            builder.Services.AddScoped<DbContext, UserDbContext>(); //表明MyDbContext是DbContext的具体实现(这个真神奇 之前项目不分层不需要这个 服了！）
+            builder.Services.AddUser_Service();//自己写的拓展方法
 
-            //Valitor注入
-            builder.Services.AddScoped<IValidator<User>, UserValidator>();
-            builder.Services.AddScoped<IValidator<CheckRecord>, CheckRecordValidator>();
-            //AutoMapper
-            builder.Services.AddAutoMapper(typeof(CustomAutoMapperProfile));
-
-            builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            builder.Services.AddScoped<IUserRepository, UserRepository>();
-            builder.Services.AddScoped<ICheckRecordRepository, CheckRecordRepository>();
-            builder.Services.AddScoped<IUserService, UserService>();
-            builder.Services.AddScoped<ICheckRecordService, CheckRecordService>();
 
             var app = builder.Build();
 
@@ -56,13 +47,13 @@ namespace JWT_API
             app.UseSwaggerUI();
 
 
+            app.MapControllers();
+
+
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
-
-            app.MapControllers();
-
             app.Run();
         }
     }

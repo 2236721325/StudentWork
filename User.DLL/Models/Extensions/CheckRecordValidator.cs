@@ -7,6 +7,7 @@ namespace User_DLL.Models.Extensions
         public CheckRecordValidator()
         {
             RuleFor(t => t.Name).MaximumLength(12);
+            RuleFor(t => t.IDCard).MaximumLength(18);
         }
     }
 }

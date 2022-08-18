@@ -11,11 +11,8 @@ namespace Shared.BaseServices
 {
     public class BaseService<T> : IBaseService<T> where T : class, new()
     {
-        protected IBaseRepository<T> repository;
-        public BaseService(IBaseRepository<T> repository)
-        {
-            this.repository = repository;
-        }
+        protected IBaseRepository<T> repository;//从子类构造参收传入 这样能避免泛型注入 虽然可以实现泛型注入 但最好不那么做 有坑
+       
 
         public async Task<int> AddAsync(T entity)
         {

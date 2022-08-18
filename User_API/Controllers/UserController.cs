@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using User_DLL.Models;
 using User_DLL.Models.DTOs;
 using User_DLL.Models.InputModels;
+using User_Service.Helps;
 using User_Service.IServices;
 
 namespace User_API.Controllers
@@ -28,13 +29,17 @@ namespace User_API.Controllers
         [HttpPost]
         public async Task<ActionResult> Register([FromBody]RegisterModel user_in)
         {
+            if ((await _UserService.Query(e => e.UserName == user_in.UserName)).FirstOrDefault() != null) return NotFound("该用户名已存在");
             var user = _Mapper.Map<RegisterModel, User>(user_in);
-            var vResult=await _validator.ValidateAsync(user);
-            if (!vResult.IsValid) return BadRequest(vResult.Errors);
+            var vResult = await _validator.ValidateAsync(user);
+            user.UserPwd = MD5Helper.MD5Encrypt32(user_in.UserPwd);
+            if (!vResult.IsValid) return BadRequest(vResult.Errors.Select(e=>e.ErrorMessage));
             await _UserService.AddAsync(user);
             return Ok("注册成功！");
         }
-       
+
+
+
     }
 
 }
